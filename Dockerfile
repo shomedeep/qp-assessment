@@ -1,4 +1,5 @@
 FROM node:alpine
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY **/package.json **/package-lock.json ./
 COPY **/package-lock.json **/package-lock.json ./
