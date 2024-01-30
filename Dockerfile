@@ -14,7 +14,7 @@ COPY ./api ./api
 COPY ./middleware ./middleware
 COPY ./migrations ./migrations
 COPY ./models ./models
-COPY ./seeders ./seeders
+# COPY ./seeders ./seeders
 COPY ./.env ./
 COPY ./.sequelizerc ./.sequelizerc
 COPY ./app.js ./app.js
