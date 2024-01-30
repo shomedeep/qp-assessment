@@ -29,7 +29,4 @@ npm i bcryptjs jsonwebtoken
 
 
 
-
-
-
-
+docker-compose up
