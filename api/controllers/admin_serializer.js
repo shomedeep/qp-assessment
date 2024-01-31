@@ -1,7 +1,6 @@
 const models = require("../../models");
 const Validator = require("fastest-validator");
 
-
 // Add a new grocery item
 function saveItem(req, res, next) {
   const { name, price, inventory } = req.body;
@@ -50,7 +49,7 @@ function getAllItems(req, res, next) {
 }
 
 // Retrieve details of a specific grocery item by ID
-function getItem(req, res) {
+function getItem(req, res, next) {
   const id = req.params.id;
   models.GroceryItem.findByPk(id)
     .then((groceryItems) => {
@@ -66,10 +65,7 @@ function getItem(req, res) {
       }
     })
     .catch((err) => {
-      res.stauts(500).json({
-        message: "Internal Server Error",
-        error: err,
-      });
+      next(err);
     });
 }
 
@@ -123,7 +119,7 @@ function updateItem(req, res, next) {
 }
 
 // Remove a grocery item
-function deleteItem(req, res) {
+function deleteItem(req, res, next) {
   const id = req.params.id;
   models.GroceryItem.findByPk(id)
     .then((item) => {
@@ -135,10 +131,7 @@ function deleteItem(req, res) {
             });
           })
           .catch((err) => {
-            res.stauts(500).json({
-              message: "Internal Server Error",
-              error: err,
-            });
+            next(err);
           });
       } else {
         res.status(404).json({
@@ -147,10 +140,7 @@ function deleteItem(req, res) {
       }
     })
     .catch((err) => {
-      res.stauts(500).json({
-        message: "Internal Server Error",
-        error: err,
-      });
+      next(err);
     });
 }
 

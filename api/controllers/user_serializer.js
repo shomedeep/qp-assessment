@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 const Validator = require("fastest-validator");
 
 // Retrieve all available grocery items for booking
-const getAvailableItems = (req, res) => {
+const getAvailableItems = (req, res, next) => {
   models.GroceryItem.findAll({
     where: {
       inventory: {
@@ -28,15 +28,12 @@ const getAvailableItems = (req, res) => {
       });
     })
     .catch((err) => {
-      res.status(500).json({
-        message: "Internal Server Error",
-        error: err,
-      });
+      next(err);
     });
 };
 
 // Create a new order by booking multiple grocery items
-const bookItems = async (req, res) => {
+const bookItems = async (req, res, err) => {
   try {
     const { itemIds, quantities } = req.body;
 
@@ -110,9 +107,8 @@ const bookItems = async (req, res) => {
     res
       .status(200)
       .json({ message: "Order created successfully", order: order });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal Server Error", error: error });
+  } catch (err) {
+    next(err);
   }
 };
 

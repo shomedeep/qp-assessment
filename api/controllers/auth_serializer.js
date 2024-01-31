@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const Validator = require("fastest-validator");
 
 // Create a admin user account
-const signUp = (req, res) => {
+const signUp = (req, res, next) => {
   const { name, email, password } = req.body;
 
   // validate input
@@ -25,7 +25,6 @@ const signUp = (req, res) => {
       .json({ message: "Validation failed", error: validationResponse });
   }
 
-
   models.User.findOne({ where: { email: email } })
     .then((result) => {
       if (result) {
@@ -43,25 +42,18 @@ const signUp = (req, res) => {
                 });
               })
               .catch((err) => {
-                res.status(500).json({
-                  message: "Something went wrong",
-                  error: err,
-                });
+                next(err);
               });
           });
         });
       }
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        message: "Something went wrong",
-        error: err,
-      });
+      next(err);
     });
 };
 
-const login = (req, res) => {
+const login = (req, res, next) => {
   const { email, password } = req.body;
   models.User.findOne({ where: { email: email } })
     .then((user) => {
@@ -91,10 +83,7 @@ const login = (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(500).json({
-        message: "Something went wrong",
-        error: err,
-      });
+      next(err);
     });
 };
 
