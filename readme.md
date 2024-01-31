@@ -42,6 +42,5 @@ npm install fastest-validator
 npm install bcryptjs jsonwebtoken
 
 # If you're using Docker:
-
 Install Docker and Docker Compose
 Run docker-compose up to start the containers.
