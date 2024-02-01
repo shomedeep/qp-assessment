@@ -45,7 +45,8 @@ npm install bcryptjs jsonwebtoken
 ### If you're using Docker:
 ```bash
 Install Docker and Docker Compose
-Run docker-compose up to start the containers.
+<mark>Run docker-compose</mark>
+ up to start the containers.
 
 
 ```
