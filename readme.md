@@ -44,3 +44,16 @@ npm install bcryptjs jsonwebtoken
 # If you're using Docker:
 Install Docker and Docker Compose
 Run docker-compose up to start the containers.
+
+
+
+
+
+```
+
+### Env variables
+DB_USERNAME=
+DB_PASSWORD=
+DB_HOST=
+DB_NAME="grocery_booking"
+JWT_KEY=
