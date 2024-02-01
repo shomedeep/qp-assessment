@@ -41,19 +41,21 @@ npm install fastest-validator
 # Install bcryptjs and jsonwebtoken for authentication
 npm install bcryptjs jsonwebtoken
 
-# If you're using Docker:
+```
+### If you're using Docker:
+```bash
 Install Docker and Docker Compose
 Run docker-compose up to start the containers.
-
-
-
 
 
 ```
 
 ### Env variables
+```bash
 DB_USERNAME=
 DB_PASSWORD=
 DB_HOST=
 DB_NAME="grocery_booking"
 JWT_KEY=
+
+```
